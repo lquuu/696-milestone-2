@@ -98,11 +98,14 @@ Part B's split is stratified by flight class (one FC1, FC2, and FC3 engine in va
 ## How to Run
 
 ### Part A: Supervised Learning (`supervised_learning/`)
+| Notebook | What It Does |
+|---|---|
+|`TreeEnsemble.ipynb`| XGBoost, LightGBM, CatBoost with grouped cross-validation
+|`Supervised_FFN.ipynb`| feed-forward networks and feature analysis
 
-1. `TreeEnsemble.ipynb`: XGBoost, LightGBM, CatBoost with grouped cross-validation
-2. `Supervised_FFN.ipynb`: feed-forward networks
-
-
+* Either file can be run in any order.
+* All files (other than the datasets) required to run are in the supervised learning folder.
+* TreeEnsemble uses ds08a_rows.parquet, and Supervised_FFN uses engineered_ds08a
 
 ### Part B: Isolation Forest (`isolation_forest/`)
 
