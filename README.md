@@ -98,10 +98,11 @@ Part B's split is stratified by flight class (one FC1, FC2, and FC3 engine in va
 ## How to Run
 
 ### Part A: Supervised Learning (`supervised_learning/`)
-| Notebook | What It Does |
-|---|---|
-|`TreeEnsemble.ipynb`| XGBoost, LightGBM, CatBoost with grouped cross-validation
-|`Supervised_FFN.ipynb`| feed-forward networks and feature analysis
+| Notebook               | What It Does |
+|------------------------|---|
+| `ds_engineer.py`       | renames columns and calculates efficiency metrics
+| `TreeEnsemble.ipynb`   | XGBoost, LightGBM, CatBoost with grouped cross-validation
+| `Supervised_FFN.ipynb` | feed-forward networks and feature analysis
 
 * Either file can be run in any order.
 * All files (other than the datasets) required to run are in the supervised learning folder.
@@ -128,7 +129,6 @@ Run in order; each reads from `data/`.
 ## Notes for Reproducing
 
 * *[To update before submission]* Some notebooks were developed in Google Colab and still mount Google Drive or use absolute paths (e.g., `/content/drive/...`). Replace these with relative paths to the files in this repository.
-* *[To update before submission]* Part A notebooks currently read `ds08a.csv` (~55 MB), which exceeds the course's 25 MB data limit. Either switch them to `isolation_forest/data/ds08a_rows.parquet` (same rows and sensor values, NASA column names) or regenerate the CSV with `Data_Extraction.ipynb` from the raw HDF5 file.
 * The raw `.h5` file, virtual environments, and checkpoints are excluded by `.gitignore`.
 
 ---
