@@ -20,6 +20,7 @@ All parts use the same data file and the same convention: `hs = 1` is healthy, `
 ├── requirements.txt
 ├── .gitignore
 ├── supervised_learning/      ← Part A (Dillon): tree ensembles, feed-forward networks
+│   ├── ds_engineer.py
 │   ├── TreeEnsemble.ipynb
 │   ├── Supervised_FFN.ipynb
 │   ├── Intermediate results for various model runs (json and csv)
