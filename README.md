@@ -40,7 +40,7 @@ https://www.nasa.gov/intelligent-systems-division/discovery-and-systems-health/p
 
 Dataset paper: Arias Chao, M., Kulkarni, C., Goebel, K., & Fink, O. (2021). Aircraft engine run-to-failure dataset under real flight conditions for prognostics and diagnostics. *Data, 6*(1), 5.
 
-This project uses the **DS08a** subset (`N-CMAPSS_DS08a-009.h5`, ~3.2 GB), which is too large for GitHub. Download it from the link above and place it in `isolation_forest/raw_data/` to rebuild the processed files.
+This project uses the **DS08a** subset (`N-CMAPSS_DS08a-009.h5`, ~3.2 GB), which is too large for GitHub. Download it from the link above (Dataset #17) and place it in `isolation_forest/raw_data/` to rebuild the processed files.
 
 ### Processed Files (included)
 
