@@ -29,8 +29,6 @@ All parts use the same data file and the same convention: `hs = 1` is healthy, `
 │   ├── 01_data_loading_eda.ipynb
 │   ├── 02_isolation_forest.ipynb
 │   ├── 03_isolation_forest_grid_search.ipynb
-│   ├── scripts/build_ds08a_from_h5.py
-│   └── data/                 ← processed Parquet files (see Data)
 ├── autoencoder/              ← Part B (Danielle): LSTM autoencoder
 │   └── lstmautoencoder.ipynb
 └── report/                   ← final report (PDF)
