@@ -54,7 +54,7 @@ This project uses the **DS08a** subset (`N-CMAPSS_DS08a-009.h5`, ~3.2 GB), which
 | `isolation_forest/data/ds08a_rows.parquet`    | 67,328 rows, downsampled to 1 row per 76 s (FC1), 127 s (FC2), 180 s (FC3) | ~13 MB |
 | `isolation_forest/data/ds08a_flights.parquet` | 994 per-flight summaries computed from the full 1 Hz data                  | ~1 MB  |
 | `isolation_forest/data/ds08a_units.parquet`   | 15 engines: NASA split, flight class, health-parameter changes             | ~11 KB |
-| `data/engineered_ds08a.parquet`               | ds08a_rows.parquet with renamed columns and new efficiency metrics         | ~26 MB |
+
 
 To rebuild them from the raw file:
 
