@@ -1,0 +1,3 @@
+criterion,model,train_loss,test_criterion_loss,test_MSE,test_MAE
+<class 'torch.nn.modules.loss.MSELoss'>,LogisticRegression,0.423986921406024,8.331094,8.331094,2.079338
+<class 'torch.nn.modules.loss.HuberLoss'>,LogisticRegression,0.2020628123135642,1.66371,8.375318,2.066008
