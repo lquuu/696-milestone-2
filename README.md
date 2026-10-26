@@ -83,8 +83,8 @@ Splits are made **by engine**, so no engine appears in more than one partition.
 
 | Part | Train | Validation | Test |
 |---|---|---|---|
-| Part B (Isolation Forest, LSTM Autoencoder) | 2, 3, 5, 6, 7, 8, 9, 13, 15 | 4, 10, 14 | **1, 11, 12** |
 | Part A (Supervised) | 3, 4, 5, 6, 7, 8, 9, 11, 15 | 2, 13, 14 | **1, 10, 12** |
+| Part B (Isolation Forest, LSTM Autoencoder) | 2, 3, 5, 6, 7, 8, 9, 13, 15 | 4, 10, 14 | **1, 11, 12** |
 
 Part B's split is stratified by flight class (one FC1, FC2, and FC3 engine in validation and test). Part A uses `GroupShuffleSplit(random_state=42)`; its test set contains no FC2 engine.
 
