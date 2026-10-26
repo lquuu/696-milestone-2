@@ -1,0 +1,6 @@
+.venv/
+**/raw_data/
+*.h5
+.DS_Store
+.ipynb_checkpoints/
+__pycache__/
