@@ -19,7 +19,11 @@ All parts use the same data file and the same convention: `hs = 1` is healthy, `
 ├── README.md
 ├── requirements.txt
 ├── .gitignore
-├── supervised_learning/      ← Part A (Dillon): data extraction, tree ensembles, feed-forward networks
+├── supervised_learning/      ← Part A (Dillon): tree ensembles, feed-forward networks
+│   ├── TreeEnsemble.ipynb
+│   ├── Supervised_FFN.ipynb
+│   ├── Intermediate results for various model runs (json and csv)
+│   └── supervised learning models (json)
 ├── isolation_forest/         ← Part B (Luciana): Isolation Forest
 │   ├── 01_data_loading_eda.ipynb
 │   ├── 02_isolation_forest.ipynb
@@ -44,11 +48,12 @@ This project uses the **DS08a** subset (`N-CMAPSS_DS08a-009.h5`, ~3.2 GB), which
 
 ### Processed Files (included)
 
-| File | Contents | Size |
-|---|---|---|
-| `isolation_forest/data/ds08a_rows.parquet` | 67,328 rows, downsampled to 1 row per 76 s (FC1), 127 s (FC2), 180 s (FC3) | ~13 MB |
-| `isolation_forest/data/ds08a_flights.parquet` | 994 per-flight summaries computed from the full 1 Hz data | ~1 MB |
-| `isolation_forest/data/ds08a_units.parquet` | 15 engines: NASA split, flight class, health-parameter changes | ~11 KB |
+| File                                          | Contents                                                                   | Size   |
+|-----------------------------------------------|----------------------------------------------------------------------------|--------|
+| `isolation_forest/data/ds08a_rows.parquet`    | 67,328 rows, downsampled to 1 row per 76 s (FC1), 127 s (FC2), 180 s (FC3) | ~13 MB |
+| `isolation_forest/data/ds08a_flights.parquet` | 994 per-flight summaries computed from the full 1 Hz data                  | ~1 MB  |
+| `isolation_forest/data/ds08a_units.parquet`   | 15 engines: NASA split, flight class, health-parameter changes             | ~11 KB |
+| `data/engineered_ds08a.csv`                   | ds08a_rows.parquet with renamed columns and new efficiency metrics         | ~40 MB |
 
 To rebuild them from the raw file:
 
@@ -94,12 +99,10 @@ Part B's split is stratified by flight class (one FC1, FC2, and FC3 engine in va
 
 ### Part A: Supervised Learning (`supervised_learning/`)
 
-*[Dillon: confirm order and file names]*
+1. `TreeEnsemble.ipynb`: XGBoost, LightGBM, CatBoost with grouped cross-validation
+2. `Supervised_FFN.ipynb`: feed-forward networks
 
-1. `data extraction and cleaning/Data_Extraction.ipynb`: HDF5 → CSV, renamed columns, engineered efficiency features
-2. `preprocessing/Preprocessing.ipynb`: engine-level splits and preprocessing helpers
-3. `supervised tree ensemble deliverables/TreeEnsemble.ipynb`: XGBoost, LightGBM, CatBoost with grouped cross-validation; `Visuals.ipynb` for SHAP figures
-4. `supervised feed forward neural net deliverables/FFN_main.ipynb`: feed-forward networks (uses `FFN_classes.ipynb`, `FFNHealthReport.ipynb`)
+
 
 ### Part B: Isolation Forest (`isolation_forest/`)
 
