@@ -30,7 +30,7 @@ All parts use the same data file and the same convention: `hs = 1` is healthy, `
 │   ├── 02_isolation_forest.ipynb
 │   ├── 03_isolation_forest_grid_search.ipynb
 ├── autoencoder/              ← Part B (Danielle): LSTM autoencoder
-│   └── lstmautoencoder.ipynb
+│   └── 01_lstm_autoencoder.ipynb
 └── report/                   ← final report (PDF)
 ```
 
