@@ -126,8 +126,7 @@ Run in order; each reads from `data/`.
 
 ## Notes for Reproducing
 
-* *[To update before submission]* Some notebooks were developed in Google Colab and still mount Google Drive or use absolute paths (e.g., `/content/drive/...`). Replace these with relative paths to the files in this repository.
-* The raw `.h5` file, virtual environments, and checkpoints are excluded by `.gitignore`.
+* The raw `.h5` file, virtual environments, and checkpoints were excluded using `.gitignore`.
 
 ---
 
