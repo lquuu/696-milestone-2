@@ -126,7 +126,9 @@ Run in order; each reads from `data/`.
 
 ## Notes for Reproducing
 
-* The raw `.h5` file, virtual environments, and checkpoints were excluded using `.gitignore`.
+* All parts read the shared Parquet files in `data/` through relative paths (e.g., `../data/ds08a_rows.parquet` from inside a part's folder).
+* The LSTM autoencoder was developed in Google Colab; a GPU is recommended for hyperparameter tuning but not required to run it. (It will just take longer on CPU.)
+* The raw `.h5` file, virtual environments, and checkpoints are excluded by `.gitignore`.
 
 ---
 
