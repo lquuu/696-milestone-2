@@ -1,12 +1,13 @@
-# DRAFT README: Jet Engine Anomaly Detection Scoring Using NASA N-CMAPSS
+# README: Jet Engine Anomaly Detection Scoring Using NASA N-CMAPSS
 
 **SIADS 696 Milestone II, University of Michigan School of Information (Fall 2026)**
-Luciana Qu · Danielle Vykydal · Dillon Wollberg
+
+Dillon Wollberg · Luciana Qu · Danielle Vykydal
 
 Can we tell when a jet engine stops being healthy? This project uses NASA's N-CMAPSS turbofan simulation (subset DS08a: 15 engines, 994 flights) to detect degradation two ways:
 
-* **Part A (Supervised):** classifiers trained on labeled flights to predict each flight's health status (`hs`).
-* **Part B (Unsupervised):** models trained on **healthy flights only** that produce a continuous anomaly score, then checked against `hs`.
+* **Part A (Supervised):** Classifiers trained on labeled flights to predict each flight's health status (`hs`).
+* **Part B (Unsupervised):** Models trained on **healthy flights only** that produce a continuous anomaly score, then checked against `hs`.
 
 All parts use the same data file and the same convention: `hs = 1` is healthy, `hs = 0` is unhealthy, and **unhealthy is the positive class**.
 
@@ -99,9 +100,9 @@ Part B's split is stratified by flight class (one FC1, FC2, and FC3 engine in va
 ### Part A: Supervised Learning (`supervised_learning/`)
 | Notebook               | What It Does |
 |------------------------|---|
-| `ds_engineer.py`       | renames columns and calculates efficiency metrics
+| `ds_engineer.py`       | Renames columns and calculates efficiency metrics
 | `TreeEnsemble.ipynb`   | XGBoost, LightGBM, CatBoost with grouped cross-validation
-| `Supervised_FFN.ipynb` | feed-forward networks and feature analysis
+| `Supervised_FFN.ipynb` | Feed-forward networks and feature analysis
 
 * Either file can be run in any order.
 * All files (other than the datasets) required to run are in the supervised learning folder.
@@ -119,9 +120,7 @@ Run in order; each reads from `data/`.
 
 ### Part B: LSTM Autoencoder (`autoencoder/`)
 
-*[Danielle: confirm]*
-
-`lstmautoencoder.ipynb`: MLP operating-condition normalization (following Sánchez et al., 2026), 10-step sliding windows, LSTM autoencoder trained on healthy windows, hyperparameter tuning on validation reconstruction loss, and test evaluation. A GPU is recommended for tuning.
+`01_lstm_autoencoder.ipynb`: MLP operating-condition normalization (following Sánchez et al., 2026), 10-step sliding windows, LSTM autoencoder trained on healthy windows, hyperparameter tuning on validation reconstruction loss, and test evaluation. A GPU is recommended for tuning.
 
 ---
 
@@ -135,7 +134,7 @@ Run in order; each reads from `data/`.
 ## References
 
 * Arias Chao, M., Kulkarni, C., Goebel, K., & Fink, O. (2021). Aircraft engine run-to-failure dataset under real flight conditions for prognostics and diagnostics. *Data, 6*(1), 5.
-* Liu, F. T., Ting, K. M., & Zhou, Z.-H. (2008). Isolation forest. *2008 Eighth IEEE International Conference on Data Mining*, 413–422.
+* Liu, F. T., Ting, K. M., & Zhou, Z.-H. (2008). Isolation forest. *2008 Eighth IEEE International Conference on Data Mining*, pp. 413–422.
 * Sánchez, P., Reyes, K., Radu, B., & Fernández, E. (2026). *Early fault detection on CMAPSS with unsupervised LSTM autoencoders*. arXiv. https://doi.org/10.48550/arXiv.2601.10269
 
 See the final report for the complete reference list.
