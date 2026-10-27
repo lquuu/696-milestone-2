@@ -19,13 +19,16 @@ All parts use the same data file and the same convention: `hs = 1` is healthy, `
 ├── README.md
 ├── requirements.txt
 ├── .gitignore
-├── supervised_learning/      ← Part A (Dillon): data extraction, tree ensembles, feed-forward networks
+├── supervised_learning/      ← Part A (Dillon): tree ensembles, feed-forward networks
+│   ├── ds_engineer.py
+│   ├── TreeEnsemble.ipynb
+│   ├── Supervised_FFN.ipynb
+│   ├── Intermediate results for various model runs (json and csv)
+│   └── supervised learning models (json)
 ├── isolation_forest/         ← Part B (Luciana): Isolation Forest
 │   ├── 01_data_loading_eda.ipynb
 │   ├── 02_isolation_forest.ipynb
 │   ├── 03_isolation_forest_grid_search.ipynb
-│   ├── scripts/build_ds08a_from_h5.py
-│   └── data/                 ← processed Parquet files (see Data)
 ├── autoencoder/              ← Part B (Danielle): LSTM autoencoder
 │   └── lstmautoencoder.ipynb
 └── report/                   ← final report (PDF)
@@ -44,11 +47,12 @@ This project uses the **DS08a** subset (`N-CMAPSS_DS08a-009.h5`, ~3.2 GB), which
 
 ### Processed Files (included)
 
-| File | Contents | Size |
-|---|---|---|
-| `isolation_forest/data/ds08a_rows.parquet` | 67,328 rows, downsampled to 1 row per 76 s (FC1), 127 s (FC2), 180 s (FC3) | ~13 MB |
-| `isolation_forest/data/ds08a_flights.parquet` | 994 per-flight summaries computed from the full 1 Hz data | ~1 MB |
-| `isolation_forest/data/ds08a_units.parquet` | 15 engines: NASA split, flight class, health-parameter changes | ~11 KB |
+| File                                          | Contents                                                                   | Size   |
+|-----------------------------------------------|----------------------------------------------------------------------------|--------|
+| `isolation_forest/data/ds08a_rows.parquet`    | 67,328 rows, downsampled to 1 row per 76 s (FC1), 127 s (FC2), 180 s (FC3) | ~13 MB |
+| `isolation_forest/data/ds08a_flights.parquet` | 994 per-flight summaries computed from the full 1 Hz data                  | ~1 MB  |
+| `isolation_forest/data/ds08a_units.parquet`   | 15 engines: NASA split, flight class, health-parameter changes             | ~11 KB |
+
 
 To rebuild them from the raw file:
 
@@ -93,13 +97,15 @@ Part B's split is stratified by flight class (one FC1, FC2, and FC3 engine in va
 ## How to Run
 
 ### Part A: Supervised Learning (`supervised_learning/`)
+| Notebook               | What It Does |
+|------------------------|---|
+| `ds_engineer.py`       | renames columns and calculates efficiency metrics
+| `TreeEnsemble.ipynb`   | XGBoost, LightGBM, CatBoost with grouped cross-validation
+| `Supervised_FFN.ipynb` | feed-forward networks and feature analysis
 
-*[Dillon: confirm order and file names]*
-
-1. `data extraction and cleaning/Data_Extraction.ipynb`: HDF5 → CSV, renamed columns, engineered efficiency features
-2. `preprocessing/Preprocessing.ipynb`: engine-level splits and preprocessing helpers
-3. `supervised tree ensemble deliverables/TreeEnsemble.ipynb`: XGBoost, LightGBM, CatBoost with grouped cross-validation; `Visuals.ipynb` for SHAP figures
-4. `supervised feed forward neural net deliverables/FFN_main.ipynb`: feed-forward networks (uses `FFN_classes.ipynb`, `FFNHealthReport.ipynb`)
+* Either file can be run in any order.
+* All files (other than the datasets) required to run are in the supervised learning folder.
+* TreeEnsemble uses ds08a_rows.parquet, and Supervised_FFN uses engineered_ds08a
 
 ### Part B: Isolation Forest (`isolation_forest/`)
 
@@ -122,7 +128,6 @@ Run in order; each reads from `data/`.
 ## Notes for Reproducing
 
 * *[To update before submission]* Some notebooks were developed in Google Colab and still mount Google Drive or use absolute paths (e.g., `/content/drive/...`). Replace these with relative paths to the files in this repository.
-* *[To update before submission]* Part A notebooks currently read `ds08a.csv` (~55 MB), which exceeds the course's 25 MB data limit. Either switch them to `isolation_forest/data/ds08a_rows.parquet` (same rows and sensor values, NASA column names) or regenerate the CSV with `Data_Extraction.ipynb` from the raw HDF5 file.
 * The raw `.h5` file, virtual environments, and checkpoints are excluded by `.gitignore`.
 
 ---
